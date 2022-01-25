@@ -1,5 +1,8 @@
 package com.rafael.freela;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class Freela {
 
     private int horas;
@@ -8,6 +11,9 @@ public class Freela {
     private float mediaSalario;
     private float valorHora;
     private float valorProjeto;
+    private float custoAdicionalTotal;
+
+    private float[] custosAdicionais = new float[6];
     
     public Freela(){}
 
