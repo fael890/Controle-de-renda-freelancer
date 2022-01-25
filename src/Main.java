@@ -7,9 +7,11 @@ public class Main {
         job.setMediaSalario(3000);
         job.setHoras(8);
         job.setDias(5);
-
         job.calcularValorHora();
-
         System.out.println(job.getValorHora());
+
+        job.setDuracaoProjeto(12);
+        job.calcularValorProjeto();
+        System.out.println(job.getValorProjeto());
     }
 }

@@ -7,6 +7,7 @@ public class Freela {
     private int duracaoProjeto;
     private float mediaSalario;
     private float valorHora;
+    private float valorProjeto;
     
     public Freela(){}
 
@@ -16,7 +17,11 @@ public class Freela {
         setValorHora(valorHora);
     }
 
-    public void calcularValorPorjeto(){}
+    public void calcularValorProjeto(){
+        float valorProjeto;
+        valorProjeto = getValorHora()*getDuracaoProjeto();
+        setValorProjeto(valorProjeto);
+    }
 
     public int getHoras() {
         return horas;
@@ -56,6 +61,14 @@ public class Freela {
 
     public void setMediaSalario(float mediaSalario) {
         this.mediaSalario = mediaSalario;
+    }
+
+    public float getValorProjeto() {
+        return valorProjeto;
+    }
+
+    public void setValorProjeto(float valorProjeto) {
+        this.valorProjeto = valorProjeto;
     } 
     
 }
