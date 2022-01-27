@@ -5,76 +5,110 @@ import java.util.ArrayList;
 
 public class Freela {
 
-    private int horas;
-    private int dias;
-    private int duracaoProjeto;
-    private float mediaSalario;
-    private float valorHora;
-    private float valorProjeto;
-    private float custoAdicionalTotal;
+    private int hora;
+    private int dia;
+    private float salarioMedio;
+    private float salarioHora;
+    private float totalHora;
+    private float custoHora;
 
-    private float[] custosAdicionais = new float[6];
+    public float[] custosFixos = new float[4];
+    public float[] custosVariaveis = new float[4];
     
     public Freela(){}
 
-    public void calcularValorHora() {
-        float valorHora;
-        valorHora = getMediaSalario()/(getHoras()*getDias()*4);
-        setValorHora(valorHora);
+    public void calcularCustosHora(){
+        float custoHora;
+        custoHora = ((calcularTotalCustoFixo()/calcularHoraTrabalho()) + (calcularTotalCustoVariavel()/160))*1.40f;
+        setCustoHora(custoHora);
+    }
+    public void calcularSalarioHora(){
+        float salarioHora = 0;
+        salarioHora = salarioMedio/calcularHoraTrabalho();
+        setSalarioHora(salarioHora);
+    }
+    public void calcularTotalHora(){
+        float totalHora = 0;
+        totalHora = getSalarioHora()+getCustoHora();
+        setTotalHora(totalHora);
     }
 
-    public void calcularValorProjeto(){
-        float valorProjeto;
-        valorProjeto = getValorHora()*getDuracaoProjeto();
-        setValorProjeto(valorProjeto);
+    public float calcularTotalCustoFixo(){
+        float custoFixoTotal = 0;
+        for (float custo : this.custosFixos) {
+            custoFixoTotal = custoFixoTotal + custo;
+        }
+        return custoFixoTotal;
+    }
+    public float calcularTotalCustoVariavel(){
+        float custoVariavelTotal = 0;
+        for (float custo : this.custosVariaveis) {
+            custoVariavelTotal = custoVariavelTotal + custo;
+        }
+        return custoVariavelTotal;
+    }
+    public int calcularHoraTrabalho(){
+        int totalHora = 0;
+        totalHora = getHora()*getDia()*4;
+        return totalHora;
     }
 
-    public int getHoras() {
-        return horas;
+    public int getHora() {
+        return hora;
+    }
+    public void setHora(int hora) {
+        this.hora = hora;
     }
 
-    public void setHoras(int horas) {
-        this.horas = horas;
+    public int getDia() {
+        return dia;
+    }
+    public void setDia(int dia) {
+        this.dia = dia;
     }
 
-    public int getDias() {
-        return dias;
+    public float getSalarioMedio() {
+        return salarioMedio;
+    }
+    public void setSalarioMedio(float salarioMedio) {
+        this.salarioMedio = salarioMedio;
     }
 
-    public void setDias(int dias) {
-        this.dias = dias;
+    public float getCustoHora() {
+        return custoHora;
+    }
+    public void setCustoHora(float custoHora) {
+        this.custoHora = custoHora;
     }
 
-    public int getDuracaoProjeto() {
-        return duracaoProjeto;
+    public float[] getCustosFixos() {
+        return custosFixos;
+    }
+    public void setCustosFixos(float[] custosFixos) {
+        this.custosFixos = custosFixos;
     }
 
-    public void setDuracaoProjeto(int duracaoProjeto) {
-        this.duracaoProjeto = duracaoProjeto;
+    public float[] getCustosVariaveis() {
+        return custosVariaveis;
+    }
+    public void setCustosVariaveis(float[] custosVariaveis) {
+        this.custosVariaveis = custosVariaveis;
     }
 
-    public float getValorHora() {
-        return valorHora;
+    public float getSalarioHora() {
+        return salarioHora;
     }
 
-    public void setValorHora(float valorHora) {
-        this.valorHora = valorHora;
+    public void setSalarioHora(float salarioHora) {
+        this.salarioHora = salarioHora;
     }
 
-    public float getMediaSalario() {
-        return mediaSalario;
+    public float getTotalHora(){
+        return this.totalHora;
     }
 
-    public void setMediaSalario(float mediaSalario) {
-        this.mediaSalario = mediaSalario;
+    public void setTotalHora(float totalHora) {
+        this.totalHora = totalHora;
     }
-
-    public float getValorProjeto() {
-        return valorProjeto;
-    }
-
-    public void setValorProjeto(float valorProjeto) {
-        this.valorProjeto = valorProjeto;
-    } 
     
 }
